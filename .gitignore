@@ -6,7 +6,7 @@ target
 
 # npm
 node_modules
-/src/**/static/js/*
+/src/**/resources/js/*.js
 
 # Package Files
 *.jar

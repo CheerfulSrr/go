@@ -1,5 +1,11 @@
 package greekn.io;
 
+import greekn.io.config.SpringConfig;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+
 /**
  * <p>
  *
@@ -13,5 +19,8 @@ package greekn.io;
  * @description:
  * @copyright: Copyright (c) 2020
  */
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = {SpringConfig.class})
+@Ignore
 public class TestApplication {
 }

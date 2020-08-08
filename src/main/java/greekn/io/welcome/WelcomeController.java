@@ -1,5 +1,8 @@
 package greekn.io.welcome;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
 /**
  * <p>
  *
@@ -13,5 +16,12 @@ package greekn.io.welcome;
  * @description:
  * @copyright: Copyright (c) 2020
  */
-public class Controller {
+@Controller
+public class WelcomeController {
+
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
 }

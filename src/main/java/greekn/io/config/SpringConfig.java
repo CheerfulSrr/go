@@ -1,5 +1,9 @@
 package greekn.io.config;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+
 /**
  * <p>
  *
@@ -13,5 +17,8 @@ package greekn.io.config;
  * @description:
  * @copyright: Copyright (c) 2020
  */
+@Configuration
+@ComponentScan("greekn.io")
+@Import({DataSourceConfig.class})
 public class SpringConfig {
 }
