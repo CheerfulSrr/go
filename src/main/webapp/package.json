@@ -6,7 +6,7 @@
   "author": "greekn",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack --mode=development --colors --debug --watch",
+    "start": "webpack-dev-server --mode=development --colors",
     "build": "webpack --mode=production"
   },
   "dependencies": {
@@ -26,9 +26,11 @@
     "css-loader": "^3.6.0",
     "eslint": "^7.5.0",
     "file-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
     "yargs": "^15.4.1"
   }
 }

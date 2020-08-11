@@ -14,11 +14,15 @@
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <jdk.version>1.8</jdk.version>
         <spring.version>5.2.3.RELEASE</spring.version>
-        <spring.data.version>2.3.0.RELEASE</spring.data.version>
+        <spring.data.version>2.2.5.RELEASE</spring.data.version>
         <aspectjweaver.version>1.9.5</aspectjweaver.version>
-        <servlet.version>3.1.0</servlet.version>
+        <persistence.version>1.0.2</persistence.version>
+        <hibernate.version>5.2.17.Final</hibernate.version>
+        <servlet-api.version>3.1.0</servlet-api.version>
+        <jsp-api.version>2.3.1</jsp-api.version>
         <hikaricp.version>3.4.5</hikaricp.version>
         <log4j2.version>2.13.3</log4j2.version>
+        <logback.version>1.2.3</logback.version>
         <slf4j.version>1.7.28</slf4j.version>
         <mysql.version>8.0.18</mysql.version>
         <lombok.version>1.18.12</lombok.version>
@@ -43,13 +47,19 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-        <!--aspectj-->
+        <!--spring-aspectj-->
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectjweaver.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-orm</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <!--spring.data-->
+        <!--spring-data-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
@@ -83,13 +93,23 @@
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-aop</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjrt</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <!--servlet, compile only-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>${jsp-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <!--test-->
@@ -99,7 +119,7 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <!--jdbc.pool-->
+        <!--persistence-->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
@@ -111,27 +131,31 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--database-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
         <!--log-->
+        <!--<dependency>-->
+        <!--    <groupId>org.apache.logging.log4j</groupId>-->
+        <!--    <artifactId>log4j-api</artifactId>-->
+        <!--    <version>${log4j2.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--    <groupId>org.slf4j</groupId>-->
+        <!--    <artifactId>slf4j-simple</artifactId>-->
+        <!--    <version>${slf4j.version}</version>-->
+        <!--</dependency>-->
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j2.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
         <!--tools-->
         <dependency>
@@ -139,6 +163,7 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>

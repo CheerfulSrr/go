@@ -1,28 +1,33 @@
 package greekn.io;
 
-import greekn.io.config.WebConfig;
-import org.junit.Ignore;
+import greekn.io.test.TargetInterface;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * <p>
- * 测试基类
+ *
  * </p>
  *
  * @author cheer
  * @version 0.1
- * @date 2020-08-08 19:31
+ * @date 2020-08-08 21:09
  * @package: greekn.io
  * @modified: cheer
  * @description:
  * @copyright: Copyright (c) 2020
  */
-@RunWith(SpringRunner.class)
-@WebAppConfiguration
-@ContextConfiguration(classes = { WebConfig.class})
-@Ignore
-public class TestApplication {
+public class TestAop extends TestApplication{
+
+    @Autowired
+    private TargetInterface target;
+
+    @Test
+    public void test() {
+        target.save();
+    }
+
 }

@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Register from '@/components/Register'
 
 ReactDOM.render(
-  <div>
-    <h1>react</h1>
-  </div>,
+  <Register/>,
   document.getElementById('root')
 );
