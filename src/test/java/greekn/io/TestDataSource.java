@@ -1,7 +1,7 @@
 package greekn.io;
 
 import com.zaxxer.hikari.HikariDataSource;
-import greekn.io.config.WebConfig;
+import greekn.io.config.WebMvcConfig;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -58,7 +58,7 @@ public class TestDataSource extends TestApplication {
 
     @Test
     public void test3() throws SQLException {
-        ApplicationContext context = new AnnotationConfigApplicationContext(WebConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(WebMvcConfig.class);
         DataSource dataSource = context.getBean(DataSource.class);
         Connection connection = dataSource.getConnection();
         System.out.println(connection);

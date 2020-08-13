@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -23,9 +24,13 @@ import org.springframework.web.servlet.view.JstlView;
  */
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = "greekn.io")
+@ComponentScan(
+        basePackages = "greekn.io"
+        , includeFilters = @ComponentScan.Filter(classes = Controller.class)
+        , useDefaultFilters = false
+)
 @Import(PersistenceConfig.class)
-public class WebConfig implements WebMvcConfigurer {
+public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -53,6 +58,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/").setViewName("redirect:/login");
     }
 }

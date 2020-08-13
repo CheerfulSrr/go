@@ -1,6 +1,6 @@
 package greekn.io;
 
-import greekn.io.config.WebConfig;
+import greekn.io.config.WebMvcConfig;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,7 +22,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
  */
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { WebConfig.class})
+@ContextConfiguration(classes = { WebMvcConfig.class})
 @Ignore
 public class TestApplication {
 }

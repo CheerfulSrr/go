@@ -4,7 +4,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 /**
  * <p>
- * WebInitializer
+ * web initializer
  * </p>
  *
  * @author cheer
@@ -15,16 +15,16 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * @description:
  * @copyright: Copyright (c) 2020
  */
-public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class SpringWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class[]{ ApplicationContextConfig.class,WebSecurityConfig.class };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{ WebConfig.class };
+        return new Class[]{ WebMvcConfig.class };
     }
 
     /**

@@ -2,7 +2,6 @@ package greekn.io.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,7 +39,7 @@ import java.util.Properties;
 @EnableJpaAuditing
 @EnableAspectJAutoProxy
 @EnableJpaRepositories(
-        basePackages = "greekn.io.*.repository",
+        basePackages = "greekn.io.**.repository",
         entityManagerFactoryRef = "entityManagerFactoryBean"
 )
 @PropertySource("classpath:db.properties")
