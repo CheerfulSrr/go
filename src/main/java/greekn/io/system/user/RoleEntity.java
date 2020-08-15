@@ -4,9 +4,7 @@ import greekn.io.common.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 /**
@@ -16,7 +14,7 @@ import javax.persistence.Table;
  *
  * @author cheer
  * @version 0.1
- * @date 2020-08-13 21:11
+ * @date 2020-08-13 21:24
  * @package: greekn.io.system.user
  * @modified: cheer
  * @description:
@@ -25,13 +23,13 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "sys_user_group")
-public class UserGroupEntity extends BaseEntity {
+@Table(name = "sys_role")
+public class RoleEntity extends BaseEntity {
 
-    @EmbeddedId
-    private UserGroupKey userGroupKey;
+    private String name;
 
-    @Enumerated
-    private Role role;
+    private String description;
+
+
 
 }

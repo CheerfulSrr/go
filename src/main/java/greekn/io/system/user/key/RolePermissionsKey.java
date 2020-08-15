@@ -1,4 +1,4 @@
-package greekn.io.system.user;
+package greekn.io.system.user.key;
 
 import lombok.Data;
 
@@ -12,18 +12,18 @@ import java.io.Serializable;
  *
  * @author cheer
  * @version 0.1
- * @date 2020-08-13 21:09
- * @package: greekn.io.system.user
+ * @date 2020-08-15 18:56
+ * @package: greekn.io.system.user.key
  * @modified: cheer
  * @description:
  * @copyright: Copyright (c) 2020
  */
 @Embeddable
 @Data
-public class UserGroupKey implements Serializable {
+public class RolePermissionsKey implements Serializable {
 
-    private Integer userId;
+    private Integer roleId;
 
-    private Integer groupId;
+    private Integer permissionsId;
 
 }

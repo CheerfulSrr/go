@@ -14,8 +14,8 @@ import javax.persistence.Table;
  *
  * @author cheer
  * @version 0.1
- * @date 2020-08-13 16:59
- * @package: greekn.io.system.group
+ * @date 2020-08-15 18:53
+ * @package: greekn.io.system.user
  * @modified: cheer
  * @description:
  * @copyright: Copyright (c) 2020
@@ -23,11 +23,21 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "sys_group")
-public class GroupEntity extends BaseEntity {
+@Table(name = "sys_permissions")
+public class PermissionsEntity extends BaseEntity {
 
     private String name;
 
-    private String description;
+    private Integer type;
+
+    private String url;
+
+    private String permission;
+
+    private String method;
+
+    private Integer sort;
+
+    private Integer parentId;
 
 }
