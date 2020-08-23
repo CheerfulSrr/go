@@ -5,8 +5,8 @@ import greekn.io.system.user.key.RolePermissionsKey;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 /**
@@ -26,9 +26,11 @@ import javax.persistence.Table;
 @Data
 @Table(name = "sys_role_permissions")
 @Entity
+@IdClass(RolePermissionsKey.class)
 public class RolePermissionsEntity extends BaseEntity {
 
-    @EmbeddedId
-    private RolePermissionsKey rolePermissionsKey;
+    private Integer roleId;
+
+    private Integer permissionsId;
 
 }

@@ -78,13 +78,20 @@ public class PersistenceConfig {
         return properties;
     }
 
-    @Bean
+    @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setDriverClassName(driverClassName);
         dataSource.setJdbcUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
+        dataSource.setMaximumPoolSize(20);
+        dataSource.setIdleTimeout(60000);
+        dataSource.setMaxLifetime(600000);
+        dataSource.setMinimumIdle(10);
+        dataSource.setLeakDetectionThreshold(5000);
+        dataSource.setConnectionTimeout(60000);
+        dataSource.setValidationTimeout(3000);
         return dataSource;
     }
 
@@ -111,6 +118,5 @@ public class PersistenceConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
         return transactionManager;
     }
-
 
 }

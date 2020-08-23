@@ -1,5 +1,6 @@
 package greekn.io.config;
 
+import greekn.io.config.session.RedisSessionConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -19,7 +20,7 @@ public class SpringWebApplicationInitializer extends AbstractAnnotationConfigDis
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{ ApplicationContextConfig.class,WebSecurityConfig.class };
+        return new Class[]{ ApplicationContextConfig.class, WebSecurityConfig.class, RedisSessionConfig.class };
     }
 
     @Override

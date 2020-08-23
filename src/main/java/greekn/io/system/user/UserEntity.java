@@ -1,19 +1,22 @@
 package greekn.io.system.user;
 
 import greekn.io.common.BaseEntity;
+import greekn.io.common.constant.SysConstant;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * <p>
- *
+ * user
  * </p>
  *
  * @author cheer
@@ -46,9 +49,11 @@ public class UserEntity extends BaseEntity implements UserDetails {
 
     private Boolean gender;
 
+    private Boolean status;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return AuthorityUtils.commaSeparatedStringToAuthorityList("MEMBER");
     }
 
     @Override
@@ -73,6 +78,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return Objects.equals(this.status ? 1 : 0, SysConstant.ENABLE);
     }
+
 }

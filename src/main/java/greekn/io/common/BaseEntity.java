@@ -33,14 +33,14 @@ public class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    private Integer id;
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    public Date createTime;
+    private Date createTime;
 
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
-    public Date updateTime;
+    private Date updateTime;
 
 }
