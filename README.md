@@ -9,12 +9,12 @@ Go是一个计划管理工具，主要功能有：
 - [x] integration mvc
 - [x] integration jpa
 - [ ] logback
-- [ ] spring session
+- [x] spring session
 - [ ] redis
 - [ ] eheche
-- [ ] spring security
+- [x] spring security
 - [ ] websocket
 - [ ] mq
 ### module
-- [ ] user
-- [ ] login
+- [x] user
+- [x] login

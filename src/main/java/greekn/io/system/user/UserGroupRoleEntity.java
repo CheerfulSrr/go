@@ -5,8 +5,8 @@ import greekn.io.system.user.key.UserGroupRoleKey;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 
 /**
@@ -25,10 +25,14 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "sys_user_group")
+@Table(name = "sys_user_group_role")
+@IdClass(UserGroupRoleKey.class)
 public class UserGroupRoleEntity extends BaseEntity {
 
-    @EmbeddedId
-    private UserGroupRoleKey userGroupRoleKey;
+    private Integer userId;
+
+    private Integer groupId;
+
+    private Integer roleId;
 
 }

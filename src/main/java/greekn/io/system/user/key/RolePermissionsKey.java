@@ -2,8 +2,8 @@ package greekn.io.system.user.key;
 
 import lombok.Data;
 
-import javax.persistence.Embeddable;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * <p>
@@ -18,12 +18,30 @@ import java.io.Serializable;
  * @description:
  * @copyright: Copyright (c) 2020
  */
-@Embeddable
 @Data
 public class RolePermissionsKey implements Serializable {
+
+    private Integer id;
 
     private Integer roleId;
 
     private Integer permissionsId;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        RolePermissionsKey that = (RolePermissionsKey) o;
+        return Objects.equals(roleId, that.roleId) &&
+                Objects.equals(permissionsId, that.permissionsId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(roleId, permissionsId);
+    }
 }

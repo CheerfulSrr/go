@@ -2,6 +2,8 @@ package greekn.io;
 
 import com.zaxxer.hikari.HikariDataSource;
 import greekn.io.config.WebMvcConfig;
+import greekn.io.system.user.UserEntity;
+import greekn.io.system.user.repository.UserRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -25,7 +27,7 @@ import java.sql.SQLException;
  * @description:
  * @copyright: Copyright (c) 2020
  */
-public class TestDataSource extends TestApplication {
+public class TestDataSource extends TestApplicationBase {
 
     @Autowired
     private DataSource dataSource;
@@ -63,6 +65,15 @@ public class TestDataSource extends TestApplication {
         Connection connection = dataSource.getConnection();
         System.out.println(connection);
         connection.close();
+    }
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Test
+    public void test5(){
+        UserEntity entity = userRepository.findByName("test1").get();
+        System.out.println(entity);
     }
 
 }

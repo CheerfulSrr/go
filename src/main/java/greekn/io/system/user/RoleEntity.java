@@ -30,6 +30,4 @@ public class RoleEntity extends BaseEntity {
 
     private String description;
 
-
-
 }

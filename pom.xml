@@ -20,11 +20,14 @@
         <hibernate.version>5.2.17.Final</hibernate.version>
         <servlet-api.version>3.1.0</servlet-api.version>
         <jsp-api.version>2.3.1</jsp-api.version>
+        <jstl.version>1.2</jstl.version>
         <hikaricp.version>3.4.5</hikaricp.version>
         <logback.version>1.2.3</logback.version>
         <mysql.version>8.0.18</mysql.version>
+        <lettuce.version>5.2.2.RELEASE</lettuce.version>
         <lombok.version>1.18.12</lombok.version>
         <jetty.version>9.4.30.v20200611</jetty.version>
+        <jackson.version>2.11.0</jackson.version>
     </properties>
 
     <dependencyManagement>
@@ -50,6 +53,14 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-releasetrain</artifactId>
                 <version>${spring-data.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <!--spring session-->
+            <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-bom</artifactId>
+                <version>Dragonfruit-RELEASE</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -90,7 +101,16 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!--spring data-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
@@ -129,6 +149,17 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!--spring session-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!--servlet, compile only-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -141,6 +172,12 @@
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>${jsp-api.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+            <scope>test</scope>
         </dependency>
         <!--test-->
         <dependency>
@@ -171,6 +208,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
+        <!--redis-->
+        <dependency>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
+            <version>${lettuce.version}</version>
+        </dependency>
         <!--log-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -182,6 +225,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <!--json-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 
@@ -196,6 +245,14 @@
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
                 </configuration>
             </plugin>
             <plugin>
