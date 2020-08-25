@@ -22,7 +22,7 @@ import org.springframework.session.web.http.HttpSessionIdResolver;
  * @description:
  * @copyright: Copyright (c) 2020
  */
-@EnableRedisHttpSession
+@EnableRedisHttpSession(redisNamespace = "greekn:io:session")
 public class RedisSessionConfig {
 
     /**

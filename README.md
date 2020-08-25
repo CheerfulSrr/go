@@ -11,7 +11,7 @@ Go是一个计划管理工具，主要功能有：
 - [ ] logback
     - [ ] 添加文件输出`appender`
 - [x] spring session
-    - [ ] 修改`DEFAULT_NAMESPACE`-`RedisIndexedSessionRepository`
+    - [x] 修改`DEFAULT_NAMESPACE`-`RedisIndexedSessionRepository`
     - [ ] 修改`PRINCIPAL_NAME_INDEX_NAME`-`RedisIndexedSessionRepository`
     - [ ] 修改`SPRING_SECURITY_CONTEXT`-`RedisIndexedSessionRepository`
 - [ ] redis
@@ -25,6 +25,8 @@ Go是一个计划管理工具，主要功能有：
 - [ ] user
     - [ ] 在线人数
 - [ ] login
-    - [ ] 重复登录
+    - [x] 重复登录
 - [ ] logout
     - [ ] 踢出下线
+## Go front document
+[src\main\webapp\README.md](src\main\webapp\README.md)
