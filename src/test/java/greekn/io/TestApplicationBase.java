@@ -1,9 +1,11 @@
 package greekn.io;
 
 import greekn.io.config.ApplicationContextConfig;
-import greekn.io.config.WebMvcConfig;
-import greekn.io.config.WebSecurityConfig;
+import greekn.io.config.security.WebSecurityConfig;
 import greekn.io.config.session.RedisSessionConfig;
+import greekn.io.config.web.WebMvcConfig;
+import org.ehcache.CacheManager;
+import org.ehcache.config.builders.CacheManagerBuilder;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,9 @@ import javax.servlet.Filter;
 @ContextConfiguration(classes = { ApplicationContextConfig.class, WebSecurityConfig.class, WebMvcConfig.class, RedisSessionConfig.class })
 public class TestApplicationBase {
 
+
     protected MockMvc mvc;
+    protected CacheManager cacheManager;
     @Autowired
     private WebApplicationContext context;
     @Autowired
@@ -47,6 +51,8 @@ public class TestApplicationBase {
                 .addFilter(springSecurityFilterChain)
                 .apply(SecurityMockMvcConfigurers.springSecurity())
                 .build();
+        cacheManager = CacheManagerBuilder.newCacheManagerBuilder()
+                .build(true);
     }
 
 }

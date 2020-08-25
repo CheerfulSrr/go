@@ -1,4 +1,4 @@
-package greekn.io.config;
+package greekn.io.config.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

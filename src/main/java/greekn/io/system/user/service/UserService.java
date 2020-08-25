@@ -2,6 +2,7 @@ package greekn.io.system.user.service;
 
 import greekn.io.system.user.UserEntity;
 import greekn.io.system.user.vo.LoginRequest;
+import org.springframework.cache.annotation.Cacheable;
 
 /**
  * <p>

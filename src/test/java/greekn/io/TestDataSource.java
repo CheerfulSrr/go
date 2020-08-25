@@ -1,7 +1,7 @@
 package greekn.io;
 
 import com.zaxxer.hikari.HikariDataSource;
-import greekn.io.config.WebMvcConfig;
+import greekn.io.config.web.WebMvcConfig;
 import greekn.io.system.user.UserEntity;
 import greekn.io.system.user.repository.UserRepository;
 import org.junit.Test;

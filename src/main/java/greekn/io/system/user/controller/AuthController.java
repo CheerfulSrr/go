@@ -1,6 +1,6 @@
 package greekn.io.system.user.controller;
 
-import greekn.io.system.user.UserEntity;
+import greekn.io.system.auth.service.SessionService;
 import greekn.io.system.user.service.UserService;
 import greekn.io.system.user.vo.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +8,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.session.FindByIndexNameSessionRepository;
-import org.springframework.session.Session;
-import org.springframework.session.SessionRepository;
 import org.springframework.session.web.http.HttpSessionIdResolver;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -41,24 +38,21 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
-    private SessionRepository sessionRepository;
-    @Autowired
     private HttpSessionIdResolver sessionIdResolver;
     @Autowired
     private HttpSessionIdResolver HttpSessionIdResolver;
     @Autowired
     private UserService userService;
-
-    // todo {@link RequestCache}
+    @Autowired
+    private SessionService sessionService;
 
     @PostMapping(value = "/login")
     @ResponseBody
     public String login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
-        Session session = sessionRepository.createSession();
-        UserEntity user = userService.getUser(loginRequest);
-        session.setAttribute(FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME, loginRequest.getName());
-        sessionRepository.save(session);
-        HttpSessionIdResolver.setSessionId(request, response, session.getId());
+        if (sessionService.existSessionId(loginRequest)) {
+            return "repeat login";
+        }
+        sessionService.createSession(loginRequest).setSessionId(request, response);
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getName(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return "success";

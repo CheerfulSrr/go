@@ -1,5 +1,6 @@
-package greekn.io.config;
+package greekn.io.config.web;
 
+import greekn.io.config.PersistenceConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan(
         basePackages = "greekn.io"
-        , includeFilters = @ComponentScan.Filter(classes = Controller.class)
+        , includeFilters = @ComponentScan.Filter(classes = { Controller.class })
         , useDefaultFilters = false
 )
 @Import(PersistenceConfig.class)

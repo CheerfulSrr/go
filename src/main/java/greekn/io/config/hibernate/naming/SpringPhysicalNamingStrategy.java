@@ -1,4 +1,4 @@
-package greekn.io.config.naming;
+package greekn.io.config.hibernate.naming;
 
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategy;

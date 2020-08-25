@@ -1,5 +1,7 @@
-package greekn.io.config;
+package greekn.io.config.web;
 
+import greekn.io.config.ApplicationContextConfig;
+import greekn.io.config.security.WebSecurityConfig;
 import greekn.io.config.session.RedisSessionConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

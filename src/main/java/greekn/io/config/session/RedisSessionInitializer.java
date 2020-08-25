@@ -4,7 +4,7 @@ import org.springframework.session.web.context.AbstractHttpSessionApplicationIni
 
 /**
  * <p>
- *
+ * redis session integration with mvc
  * </p>
  *
  * @author cheer

@@ -1,6 +1,10 @@
 package greekn.io.test.controller;
 
+import greekn.io.system.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -19,7 +23,13 @@ import javax.servlet.http.HttpSession;
  * @copyright: Copyright (c) 2020
  */
 @RestController
+@RequestMapping("/api/test")
 public class TestController {
+
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/i1")
     public String c1(HttpSession httpSession) {
@@ -40,6 +50,12 @@ public class TestController {
     public String c3(HttpSession session) {
         session.removeAttribute("test");
         return "clear";
+    }
+
+    @GetMapping("/t1")
+    public String t1() {
+        userService.getUser("test1", "test2");
+        return "t1";
     }
 
 }

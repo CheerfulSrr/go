@@ -28,6 +28,8 @@
         <lombok.version>1.18.12</lombok.version>
         <jetty.version>9.4.30.v20200611</jetty.version>
         <jackson.version>2.11.0</jackson.version>
+        <ehcache.version>3.8.1</ehcache.version>
+        <cache-api.version>1.1.1</cache-api.version>
     </properties>
 
     <dependencyManagement>
@@ -231,6 +233,17 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <!--cache-->
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>${cache-api.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,4 +1,4 @@
-package greekn.io.config;
+package greekn.io.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -68,7 +68,7 @@ public class WebSecurityConfig<S extends Session> extends WebSecurityConfigurerA
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/api/sys/login", "/api/sys/test3");
+        web.ignoring().antMatchers("/api/sys/login", "/api/sys/test3", "/api/test/**");
     }
 
     @Override

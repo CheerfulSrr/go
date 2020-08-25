@@ -5,6 +5,7 @@ import greekn.io.system.user.repository.UserRepository;
 import greekn.io.system.user.service.UserService;
 import greekn.io.system.user.vo.LoginRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,6 +32,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordEncoder encoder;
 
+    @Cacheable(cacheNames = "security-cache", key = "#result.id", condition = "#result!=null")
     @Override
     public UserEntity getUser(String username, String password) {
         UserEntity user = userRepository.findByName(username).orElseThrow(() -> new UsernameNotFoundException("未找到用户: " + username));

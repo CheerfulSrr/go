@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.7.xsd
+        http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.7.xsd">
+
+    <service>
+        <jsr107:defaults default-template="default" enable-statistics="true" enable-management="false"/>
+    </service>
+    <!-- Persistent cache directory -->
+    <persistence directory="/home/spring-framework-5-ehcache/cache"/>
+
+    <!-- Default cache template -->
+    <cache-template name="default">
+        <expiry>
+            <ttl unit="minutes">30</ttl>
+        </expiry>
+
+        <resources>
+            <heap>1000</heap>
+            <offheap unit="MB">10</offheap>
+            <disk persistent="true" unit="MB">20</disk>
+        </resources>
+    </cache-template>
+
+    <cache alias="security-cache" uses-template="default">
+        <key-type>java.lang.String</key-type>
+        <value-type>greekn.io.system.user.UserEntity</value-type>
+    </cache>
+
+</config>

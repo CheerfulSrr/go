@@ -19,11 +19,15 @@
     </appender>
 
     <logger name="greekn.io" level="info"/>
-    <logger name="org.springframework.security" level="debug" additivity="false">
+    <logger name="org.springframework.security" level="info" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
-
-    <logger name="com.zaxxer.hikari" level="debug" additivity="false"/>
+    <logger name="com.zaxxer.hikari" level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org.ehcache" level="info" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
 
     <root level="info">
         <appender-ref ref="STDOUT"/>

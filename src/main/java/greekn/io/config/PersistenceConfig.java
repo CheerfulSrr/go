@@ -64,6 +64,11 @@ public class PersistenceConfig {
     @Autowired
     private Environment env;
 
+    /**
+     * 用于配置hibernate的properties
+     *
+     * @return Properties
+     */
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
         properties.put(HIBERNATE_DIALECT, env.getRequiredProperty(HIBERNATE_DIALECT));
@@ -78,6 +83,11 @@ public class PersistenceConfig {
         return properties;
     }
 
+    /**
+     * 数据源配置
+     *
+     * @return HikariDataSource
+     */
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         HikariDataSource dataSource = new HikariDataSource();
@@ -112,6 +122,11 @@ public class PersistenceConfig {
         return entityManagerFactory.createEntityManager();
     }
 
+    /**
+     * 事务配置
+     *
+     * @return PlatformTransactionManager
+     */
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

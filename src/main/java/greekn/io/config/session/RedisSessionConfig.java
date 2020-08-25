@@ -1,24 +1,17 @@
 package greekn.io.config.session;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
-import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
-import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 import org.springframework.session.web.http.HeaderHttpSessionIdResolver;
 import org.springframework.session.web.http.HttpSessionIdResolver;
 
-import java.time.Duration;
-
 /**
  * <p>
- *
+ * redis session config
  * </p>
  *
  * @author cheer
@@ -32,11 +25,6 @@ import java.time.Duration;
 @EnableRedisHttpSession
 public class RedisSessionConfig {
 
-    @Bean
-    public LettuceConnectionFactory connectionFactory() {
-        return new LettuceConnectionFactory(standaloneConfiguration(), clientConfiguration());
-    }
-
     /**
      * 请求头认证
      *
@@ -47,6 +35,12 @@ public class RedisSessionConfig {
         return HeaderHttpSessionIdResolver.xAuthToken();
     }
 
+    /**
+     * 默认cookie配置
+     * 目前使用请求头认证，所以此配置无用
+     *
+     * @return DefaultCookieSerializer
+     */
     @Bean
     public DefaultCookieSerializer getDefaultCookieSerializer() {
         DefaultCookieSerializer defaultCookieSerializer = new DefaultCookieSerializer();
@@ -64,27 +58,6 @@ public class RedisSessionConfig {
     @Bean
     public RedisSerializer<Object> springSessionDefaultRedisSerializer() {
         return new Jackson2JsonRedisSerializer(Object.class);
-    }
-
-    @Bean
-    public RedisTemplate<String, String> redisTemplate(LettuceConnectionFactory connectionFactory) {
-        RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
-        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-        redisTemplate.setConnectionFactory(connectionFactory);
-        redisTemplate.setDefaultSerializer(stringRedisSerializer);
-        return redisTemplate;
-    }
-
-    private RedisStandaloneConfiguration standaloneConfiguration() {
-        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration();
-        configuration.setHostName("101.37.83.15");
-        configuration.setPort(49703);
-        configuration.setPassword("CHE$0827.&");
-        return configuration;
-    }
-
-    private LettuceClientConfiguration clientConfiguration() {
-        return LettuceClientConfiguration.builder().commandTimeout(Duration.ofSeconds(30)).build();
     }
 
 }

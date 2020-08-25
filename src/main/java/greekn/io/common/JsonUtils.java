@@ -20,6 +20,12 @@ public class JsonUtils {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
+    /**
+     * 对象转字符串
+     *
+     * @param data
+     * @return
+     */
     public static String objectToStr(Object data) {
         try {
             return MAPPER.writeValueAsString(data);
