@@ -6,7 +6,7 @@ target
 
 # npm
 node_modules
-/src/**/resources/js/budle.js
+src/main/webapp/resources/js/bundle.js
 
 # Package Files
 *.jar
