@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: todo
+  cloud:
+    nacos:
+
+      discovery:
+        server-addr:  172.28.44.103:8848
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/todo
+    username: root
+    password: root
+    hikari:
+      idle-timeout: 3000
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      format_sql: true
+    show-sql: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
