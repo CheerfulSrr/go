@@ -6,7 +6,7 @@ target
 
 # npm
 node_modules
-src/main/webapp/resources/js/bundle.js
+yarn.lock
 
 # Package Files
 *.jar
