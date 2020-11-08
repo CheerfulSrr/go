@@ -1,28 +1,23 @@
 spring:
   application:
-    name: todo
-  cloud:
-    nacos:
-
-      discovery:
-        server-addr:  172.28.44.103:8848
+    name: go
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/todo
+    url: jdbc:mysql://localhost:3306/go?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: root
     hikari:
-      idle-timeout: 3000
+      idle-timeout: 60000
+      connection-timeout: 60000
+      max-lifetime: 60000
+      maximum-pool-size: 16
   jpa:
+    show-sql: true
+    open-in-view: false
     hibernate:
       ddl-auto: update
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     properties:
-      format_sql: true
-    show-sql: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+      hibernate:
+        format_sql: true

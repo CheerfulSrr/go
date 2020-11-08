@@ -2,7 +2,6 @@ package io.greekn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * <p>
@@ -18,9 +17,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @copyright: Copyright (c) 2020
  */
 @SpringBootApplication
-@EnableDiscoveryClient
-public class TodoApplication {
+public class GoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(TodoApplication.class);
+        SpringApplication.run(GoApplication.class);
     }
 }
