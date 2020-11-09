@@ -1,2 +1,5 @@
 ### /kind/create
 GET localhost:8080/kind/create?kind=11&aliasName=ddd
+
+### /kind/list
+GET localhost:8080/kind/list
