@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import static io.greekn.base.ResponseFactory.*;
+
+
 /**
  * <p>
  *
@@ -34,7 +37,7 @@ public class KindController {
         if (byKindName == null) {
             kindRepository.save(kindEntity);
         }
-        return "ok";
+        return ok();
     }
 
 }
