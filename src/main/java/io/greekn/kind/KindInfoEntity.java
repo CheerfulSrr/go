@@ -1,7 +1,7 @@
-package io.greekn.book;
+package io.greekn.kind;
 
 import io.greekn.base.BaseEntity;
-import io.greekn.schedule.BookScheduleEntity;
+import io.greekn.schedule.ScheduleEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -27,12 +27,12 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "book_info")
-public class BookInfoEntity extends BaseEntity {
+@Table(name = "kind_info")
+public class KindInfoEntity extends BaseEntity {
     /**
      * 书名
      */
-    private String bookName;
+    private String kindName;
     /**
      * 书类
      */
@@ -60,7 +60,7 @@ public class BookInfoEntity extends BaseEntity {
      */
     private Integer status;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookInfo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "kindInfo")
     @org.hibernate.annotations.ForeignKey(name = "none")
-    private Set<BookScheduleEntity> bookChapterInfo = new HashSet<>();
+    private Set<ScheduleEntity> scheduleEntities = new HashSet<>();
 }

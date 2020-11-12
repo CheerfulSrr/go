@@ -15,5 +15,5 @@ import org.springframework.stereotype.Service;
  * @description
  */
 @Service
-public class KindService {
+public class KindInfoService {
 }

@@ -1,10 +1,10 @@
 package io.greekn.kind;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,26 +27,25 @@ import static io.greekn.util.ConvertUtils.*;
  */
 @RestController
 @RequestMapping("/kind")
-public class KindController {
+public class KindInfoController {
 
     @Autowired
-    private KindRepository kindRepository;
+    private KindInfoRepository kindInfoRepository;
 
-    @GetMapping("/create")
-    public ResponseEntity createKind(@RequestParam("kind") String kind, @RequestParam("aliasName") String aliasName) {
-        KindEntity kindEntity = new KindEntity();
-        kindEntity.setKindName(kind);
-        kindEntity.setAliasName(aliasName);
-        KindEntity byKindName = kindRepository.findByKindName(kind);
-        if (byKindName == null) {
-            kindRepository.save(kindEntity);
+    @GetMapping("/save")
+    public ResponseEntity createKind(KindInfoDto kindInfoDto) {
+        KindInfoEntity kindEntity = new KindInfoEntity();
+        BeanUtils.copyProperties(kindInfoDto, kindEntity);
+        KindInfoEntity infoEntity = kindInfoRepository.findByKindNameAndKind(kindEntity.getKindName(), kindEntity.getKind());
+        if (infoEntity != null) {
+            kindInfoRepository.save(kindEntity);
         }
         return ok();
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<KindVo>> list() {
-        return ok(sourceToTarget(kindRepository.findAll(), KindVo.class));
+    public ResponseEntity<List<KindInfoVo>> list() {
+        return ok(sourceToTarget(kindInfoRepository.findAll(), KindInfoVo.class));
     }
 
 }

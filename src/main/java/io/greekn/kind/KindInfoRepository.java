@@ -16,6 +16,6 @@ import org.springframework.stereotype.Repository;
  * @description
  */
 @Repository
-public interface KindRepository extends JpaRepository<KindEntity, Integer> {
-    KindEntity findByKindName(String kind);
+public interface KindInfoRepository extends JpaRepository<KindInfoEntity, Integer> {
+    KindInfoEntity findByKindNameAndKind(String kindName, Integer kind);
 }

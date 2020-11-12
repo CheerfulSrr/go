@@ -18,8 +18,12 @@ import java.io.Serializable;
  * @copyright: Copyright (c) 2020
  */
 @Data
-public class KindVo implements Serializable {
+public class KindInfoVo implements Serializable {
     private Integer id;
     private String kindName;
-    private String aliasName;
+    private String tags;
+    private Integer kind;
+    private String url;
+    private Integer chapter;
+    private Integer status;
 }

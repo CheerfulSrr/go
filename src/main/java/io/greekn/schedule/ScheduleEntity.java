@@ -1,7 +1,7 @@
 package io.greekn.schedule;
 
 import io.greekn.base.BaseEntity;
-import io.greekn.book.BookInfoEntity;
+import io.greekn.kind.KindInfoEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,15 +22,15 @@ import java.util.Date;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Table(name = "book_schedule")
+@Table(name = "schedule")
 @Entity
-public class BookScheduleEntity extends BaseEntity {
+public class ScheduleEntity extends BaseEntity {
     /**
      * 关联的书籍
      */
     @ManyToOne
-    @JoinColumn(name = "book_info_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
-    private BookInfoEntity bookInfo;
+    @JoinColumn(name = "kind_info_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
+    private KindInfoEntity kindInfo;
 
     /**
      * 开始日期
