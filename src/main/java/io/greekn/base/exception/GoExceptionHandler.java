@@ -22,7 +22,7 @@ import java.io.IOException;
 @RestControllerAdvice
 @Slf4j
 public class GoExceptionHandler {
-    @ExceptionHandler
+    @ExceptionHandler(GoException.class)
     public void goExceptionHandler(GoException e, HttpServletResponse response) throws IOException {
         response.sendError(400, e.getLocalizedMessage());
     }

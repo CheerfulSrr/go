@@ -18,6 +18,6 @@ import org.hibernate.dialect.MySQL57Dialect;
 public class MySQLUTF8Dialect extends MySQL57Dialect {
     @Override
     public String getTableTypeString() {
-        return " ENGINE=InnoDB DEFAULT CHARSET=utf8";
+        return "engine innodb charset utf8mb4 collate utf8mb4_general_ci";
     }
 }

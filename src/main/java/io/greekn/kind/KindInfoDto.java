@@ -2,6 +2,8 @@ package io.greekn.kind;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * <p>
  *

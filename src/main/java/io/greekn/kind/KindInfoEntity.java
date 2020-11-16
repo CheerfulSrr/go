@@ -1,7 +1,7 @@
 package io.greekn.kind;
 
 import io.greekn.base.BaseEntity;
-import io.greekn.schedule.ScheduleEntity;
+import io.greekn.schedule.entity.ScheduleEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -56,7 +56,8 @@ public class KindInfoEntity extends BaseEntity {
     /**
      * 是否完成
      * 0: 未完成
-     * 1: 已完成. 当阅读计划全部完成时
+     * 1: 进行中
+     * 2: 已完成. 当阅读计划全部完成时
      */
     private Integer status;
 

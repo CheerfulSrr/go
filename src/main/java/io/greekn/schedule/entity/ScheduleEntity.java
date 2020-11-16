@@ -1,4 +1,4 @@
-package io.greekn.schedule;
+package io.greekn.schedule.entity;
 
 import io.greekn.base.BaseEntity;
 import io.greekn.kind.KindInfoEntity;
@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * <p>
@@ -32,6 +34,13 @@ public class ScheduleEntity extends BaseEntity {
     @JoinColumn(name = "kind_info_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "none", value = ConstraintMode.NO_CONSTRAINT))
     private KindInfoEntity kindInfo;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "schedule")
+    @org.hibernate.annotations.ForeignKey(name = "none")
+    private Set<ScheduleDetailEntity> scheduleDetailEntities = new HashSet<>();
+    /**
+     * 计划名称
+     */
+    private String scheduleName;
     /**
      * 开始日期
      */
@@ -42,28 +51,5 @@ public class ScheduleEntity extends BaseEntity {
      */
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date endDate;
-    /**
-     * 计划状态
-     * 0: 未开始
-     * 1: 开始
-     * 2: 暂停
-     * 3: 停止
-     * 4: 结束
-     */
-    private Integer status;
-    /**
-     * 当前章节
-     */
-    private Integer currentChapter;
-    /**
-     * 当前章节所用天数
-     * 包括添加计划的那天
-     */
-    private Integer currentChapterDay;
-    /**
-     * 当前章节所用小时
-     * 默认截止至上一天24点
-     */
-    private Integer currentChapterHour;
 
 }

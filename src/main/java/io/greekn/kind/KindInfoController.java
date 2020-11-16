@@ -37,7 +37,7 @@ public class KindInfoController {
         KindInfoEntity kindEntity = new KindInfoEntity();
         BeanUtils.copyProperties(kindInfoDto, kindEntity);
         KindInfoEntity infoEntity = kindInfoRepository.findByKindNameAndKind(kindEntity.getKindName(), kindEntity.getKind());
-        if (infoEntity != null) {
+        if (infoEntity == null) {
             kindInfoRepository.save(kindEntity);
         }
         return ok();
